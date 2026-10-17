@@ -1,0 +1,9 @@
+# Zero external Python dependencies required!
+# Uses Python standard library only (Python 3.8+).
+#
+# External System Dependency:
+# 'ffmpeg' is required to assemble and download HLS streams:
+#   - Debian / Ubuntu: sudo apt install ffmpeg
+#   - Arch Linux: sudo pacman -S ffmpeg
+#   - macOS: brew install ffmpeg
+#   - Windows: winget install Gyan.FFmpeg

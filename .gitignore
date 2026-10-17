@@ -1,0 +1,30 @@
+# Environment variables and secrets
+.env
+*.env.local
+
+# Downloaded media & data
+*.mp4
+*.ts
+*.m3u8
+*.vtt
+downloads/
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+dist/
+build/
+*.egg-info/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

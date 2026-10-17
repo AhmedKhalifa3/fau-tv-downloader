@@ -115,7 +115,8 @@ python3 fau_downloader.py "https://www.fau.tv/series/deep-learning-w20" --series
 | `--cookie` | Session cookie string (overrides `.env`) | Value from `.env` |
 | `--cookie-file` | Path to a Netscape `cookies.txt` file | `None` |
 | `--stream` | Stream view: `composite`, `presentation`, or `presenter` | `composite` |
-| `-o`, `--output-dir` | Target folder for downloaded `.mp4` and `.vtt` files | `./downloads` |
+| `-o`, `--output-dir` | Base directory for downloads (course subfolder is created inside) | `./downloads` |
+| `--flat` | Do not create course subfolders; save directly in output-dir | `False` |
 | `--dry-run` | Inspect available episodes and stream URLs without downloading | `False` |
 | `--no-subs` | Disable downloading subtitle tracks | `False` |
 

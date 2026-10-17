@@ -7,3 +7,4 @@
 #   - Arch Linux: sudo pacman -S ffmpeg
 #   - macOS: brew install ffmpeg
 #   - Windows: winget install Gyan.FFmpeg
+

@@ -133,3 +133,4 @@ python3 fau_downloader.py "https://www.fau.tv/series/deep-learning-w20" --series
 This tool is created solely for personal educational use and offline studying by authorized students and staff. Ensure compliance with FAU's usage guidelines and data policies.
 
 Distributed under the [MIT License](LICENSE).
+

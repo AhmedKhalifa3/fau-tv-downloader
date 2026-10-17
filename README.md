@@ -84,6 +84,8 @@ FAU_SESSION_COOKIE=eyJpdiI6...
 5. Copy its **Value** and paste it into `.env`.
 
 > **Note**: Your `.env` file is automatically ignored by Git in `.gitignore` to keep your credentials private.
+>
+> **💡 Cookie Freshness Tip**: FAU session cookies expire after idle timeouts or if you log out in your browser. If you ever see an `Access Locked` error, simply log back in to FAU.tv in your browser, copy a fresh cookie, and update `.env`.
 
 ---
 
@@ -126,6 +128,27 @@ python3 fau_downloader.py "https://www.fau.tv/series/deep-learning-w20" --series
 
 - **VLC Media Player**: Simply open the downloaded `.mp4` file in [VLC](https://www.videolan.org/vlc/). VLC will automatically detect and load the companion `.vtt` subtitle file in the same directory.
 - **mpv**: Run `mpv "01 - 1 - Deep Learning.mp4"` — subtitles and audio tracks are loaded out of the box.
+
+---
+
+## ❓ Troubleshooting & Common Issues
+
+### 1. `[!] Access Locked: Reason: Requires FAU login` (Expired / Stale Cookies)
+- **Cause**: FAU.tv session cookies (`das_videoportal_der_fau_session`) have a limited lifespan and expire after idle timeouts or if you log out in your browser.
+- **Solution**:
+  1. Open [FAU.tv](https://www.fau.tv) in your browser and log in again.
+  2. Open Developer Tools (`F12`) $\rightarrow$ **Application / Storage** $\rightarrow$ **Cookies**.
+  3. Copy the **fresh** value of `das_videoportal_der_fau_session` and update it in your `.env` file.
+
+### 2. `[!] Access Locked: Reason: Restricted to StudOn course participants`
+- **Cause**: The video or course is "kursgebunden" (course-bound). It requires you to be an enrolled member of the specific StudOn course associated with the lecture.
+- **Solution**:
+  1. Open the course on [StudOn](https://www.studon.fau.de) and join/enroll in it (e.g. click *"Beitreten"*).
+  2. **Important**: After enrolling on StudOn, **log out of FAU.tv and log back in** in your browser. This forces FAU.tv to perform a fresh Single Sign-On (SSO) handshake with IdM/StudOn to synchronize your new course permissions.
+  3. Copy the newly issued `das_videoportal_der_fau_session` cookie into `.env`.
+
+### 3. Session Invalidation on Browser Logout
+- When you click "Abmelden" (Log Out) in your browser, FAU.tv invalidates that session ID server-side. Do not log out in your browser while downloads are queued or running with that session cookie.
 
 ---
 

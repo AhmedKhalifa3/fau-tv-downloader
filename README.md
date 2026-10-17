@@ -128,9 +128,34 @@ python3 fau_downloader.py "https://www.fau.tv/series/deep-learning-w20" --series
 
 ---
 
-## ⚖️ Disclaimer & License
+## ⚖️ Legal & Ethical Usage Guidelines
 
-This tool is created solely for personal educational use and offline studying by authorized students and staff. Ensure compliance with FAU's usage guidelines and data policies.
+Before using or contributing to this repository, please review the following legal context regarding copyright law, university terms, and personal educational use:
 
-Distributed under the [MIT License](LICENSE).
+### 1. The Right to Private Copy (*Recht auf Privatkopie* — § 53 UrhG)
+Under **Section 53 of the German Copyright Act (*Urheberrechtsgesetz - UrhG*)**, individuals are legally permitted to make single copies of copyrighted works for **strictly private, non-commercial educational study**, provided that:
+- **Lawfully Accessible Source**: You access the media through your own authorized university account via the official portal.
+- **No DRM Circumvention (§ 95a UrhG)**: German and EU law prohibit circumventing "effective technical measures" (such as Widevine, PlayReady, or FairPlay encryption). FAU.tv uses standard, unencrypted HTTP Live Streaming (HLS). Authentication checks verify your enrollment status, but the streams themselves are not DRM-encrypted.
+
+### 2. Terms of Use vs. Copyright Law
+- **Statutory Law**: Under § 53 UrhG, making a personal backup or offline copy for your own study when internet access is unavailable (e.g. while commuting or traveling) is protected under the private study doctrine.
+- **Portal Guidelines**: FAU.tv states in its FAQ that protected media are intended for online viewing. Bypassing the lack of an official download button for personal study is a personal use matter, but must never be used to facilitate wider distribution.
+
+### 3. 🚫 Strict Prohibitions & Red Lines
+To ensure compliance with the law and university IT policies:
+- ❌ **NO Public Redistribution**: Never upload, mirror, or share downloaded lecture recordings on public hosting services (YouTube, Google Drive, Mega, Telegram, torrents, etc.).
+- ❌ **NO Credential Sharing**: Never share or commit your `.env` file, session cookies, or login credentials.
+- ❌ **NO Commercial Use**: The tool and downloaded content must only be used for personal, non-commercial academic study.
+
+### 4. 🛡️ Responsible Server Etiquette
+- This downloader processes episodes sequentially to respect university server bandwidth.
+- Avoid modifying the tool to make aggressive, high-concurrency requests that could degrade service for other students.
+
+---
+
+## 📄 License & Disclaimer
+
+This project is distributed under the [MIT License](LICENSE).
+
+**Disclaimer**: This tool is an independent, open-source project intended solely for personal study and offline viewing by authorized university students. It is neither affiliated with, endorsed by, nor officially connected to Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU) or the Regionales Rechenzentrum Erlangen (RRZE). Users are solely responsible for ensuring their usage complies with all applicable local laws, campus regulations, and institutional guidelines.
 

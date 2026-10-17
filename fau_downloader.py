@@ -376,7 +376,9 @@ def main():
             sys.exit(1)
 
     url = args.url.strip()
-    is_series = args.series or ("/series/" in url and url.count("/") <= 5)
+    url_parts = url.rstrip("/").split("/")
+    is_base_series = (len(url_parts) == 5 and url_parts[3] == "series")
+    is_series = args.series or is_base_series
 
     try:
         if is_series:

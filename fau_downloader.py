@@ -347,7 +347,24 @@ def main():
     )
     parser.add_argument(
         "url",
+        nargs="?",
         help="URL of the video clip or series (e.g. https://www.fau.tv/series/deep-learning-w20)"
+    )
+    parser.add_argument(
+        "--server",
+        action="store_true",
+        help="Start the companion HTTP server for the Chrome Extension"
+    )
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=48123,
+        help="Port for the companion server (default: 48123)"
+    )
+    parser.add_argument(
+        "--host",
+        default="127.0.0.1",
+        help="Host for the companion server (default: 127.0.0.1)"
     )
     parser.add_argument(
         "--series",
@@ -392,6 +409,17 @@ def main():
     )
 
     args = parser.parse_args()
+
+    if args.server:
+        from fau_server import run_server
+        run_server(host=args.host, port=args.port)
+        return
+
+    if not args.url:
+        parser.print_help()
+        print("\nTip: To start the companion server for the Chrome Extension, run:")
+        print("  python3 fau_downloader.py --server")
+        sys.exit(1)
 
     # Cookie precedence: --cookie-file > --cookie / .env
     cookie_str = args.cookie

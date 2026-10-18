@@ -1,0 +1,280 @@
+/* FAU.tv Downloader Companion - Injected Styles */
+
+#fau-dl-floating-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999999;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #1e293b;
+  box-sizing: border-box;
+}
+
+#fau-dl-floating-container * {
+  box-sizing: border-box;
+}
+
+/* Floating Trigger Button */
+.fau-dl-fab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #003865 0%, #002244 100%);
+  color: #ffffff;
+  padding: 12px 18px;
+  border-radius: 50px;
+  box-shadow: 0 4px 18px rgba(0, 56, 101, 0.35);
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+}
+
+.fau-dl-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 56, 101, 0.45);
+  background: linear-gradient(135deg, #00467e 0%, #002c57 100%);
+}
+
+.fau-dl-fab-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fau-dl-fab-text {
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: 0.2px;
+}
+
+/* Inline Button injected next to clip title */
+.fau-dl-inline-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #003865;
+  color: #ffffff !important;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-left: 12px;
+  vertical-align: middle;
+  text-decoration: none !important;
+  transition: background-color 0.15s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.fau-dl-inline-btn:hover {
+  background-color: #002848;
+}
+
+/* Dropup Card */
+.fau-dl-card {
+  position: absolute;
+  bottom: 56px;
+  right: 0;
+  width: 320px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.18), 0 0 1px rgba(0,0,0,0.15);
+  border: 1px solid #e2e8f0;
+  padding: 16px;
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  animation: fauDlFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fau-dl-card.active {
+  display: flex;
+}
+
+@keyframes fauDlFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.fau-dl-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 8px;
+}
+
+.fau-dl-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #003865;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fau-dl-close {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.fau-dl-close:hover {
+  color: #475569;
+  background: #f1f5f9;
+}
+
+.fau-dl-type-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  background: #e0f2fe;
+  color: #0369a1;
+  margin-bottom: 4px;
+}
+
+.fau-dl-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fau-dl-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.fau-dl-select {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 13px;
+  color: #1e293b;
+  background-color: #f8fafc;
+  outline: none;
+}
+
+.fau-dl-select:focus {
+  border-color: #003865;
+  background-color: #ffffff;
+}
+
+.fau-dl-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #334155;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fau-dl-btn-primary {
+  background: #2ecc71;
+  color: #ffffff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.15s ease;
+}
+
+.fau-dl-btn-primary:hover {
+  background: #27ae60;
+}
+
+.fau-dl-btn-secondary {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.fau-dl-btn-secondary:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+/* Toast Message */
+.fau-dl-toast {
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  display: none;
+  line-height: 1.4;
+}
+
+.fau-dl-toast.info {
+  display: block;
+  background: #e0f2fe;
+  color: #075985;
+  border: 1px solid #bae6fd;
+}
+
+.fau-dl-toast.success {
+  display: block;
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.fau-dl-toast.warning {
+  display: block;
+  background: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.fau-dl-toast.error {
+  display: block;
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.fau-dl-code-box {
+  background: #0f172a;
+  color: #38bdf8;
+  font-family: monospace;
+  font-size: 11px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  word-break: break-all;
+  user-select: all;
+  margin-top: 4px;
+}
+

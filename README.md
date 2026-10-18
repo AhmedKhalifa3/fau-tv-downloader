@@ -10,6 +10,7 @@ A fast, lightweight, zero-dependency Python tool to download public and authenti
 
 ## ✨ Features
 
+- **🧩 Chrome Extension Companion**: 1-Click downloads directly from FAU.tv with automatic session authentication — zero manual cookie copying required!
 - **🎓 Supports Authenticated Courses**: Seamlessly downloads protected lecture series that require FAU IdM / SSO / StudOn login using your session cookie.
 - **⚡ Zero Re-Encoding Loss**: Uses `ffmpeg` stream copying (`-c copy`) to assemble HLS `.m3u8` streams into single `.mp4` files in seconds without loss of video/audio quality.
 - **📚 Batch Series Downloads**: Automatically discovers and sequentially downloads all episodes in a course series (e.g., Deep Learning, Pattern Recognition) with clean numeric indexing (`01 - ...`, `02 - ...`).
@@ -108,11 +109,59 @@ python3 fau_downloader.py "https://www.fau.tv/series/deep-learning-w20" --series
 
 ---
 
+## 🧩 Chrome Extension Companion (1-Click & Auto-Cookie)
+
+Tired of copying session cookies into `.env`? Use the included Chrome Extension to download directly from FAU.tv!
+
+```
+┌─────────────────────────────────┐
+│ Browser (FAU.tv Clip / Series)  │
+└────────────────┬────────────────┘
+                 │ 1-Click "Download" (Floating widget or toolbar popup)
+                 ▼
+┌─────────────────────────────────┐
+│ Chrome Extension (Manifest V3)  │ ──► Reads active 'das_videoportal_der_fau_session'
+└────────────────┬────────────────┘
+                 │ POST http://127.0.0.1:48123/download { url, cookie, stream, subs }
+                 ▼
+┌─────────────────────────────────┐
+│ Companion Server (fau_server.py)│ ──► Auto-syncs cookie to .env
+└────────────────┬────────────────┘
+                 │ Enqueues job to background worker thread
+                 ▼
+┌─────────────────────────────────┐
+│ ffmpeg (Lossless Stream Copy)   │ ──► Assembles HLS stream into high-quality .mp4
+└────────────────┬────────────────┘
+                 ▼
+       ./downloads/<Course>/
+```
+
+### 1. Install Extension (30 seconds)
+1. Open Chrome/Brave/Edge and navigate to `chrome://extensions`.
+2. Turn on **Developer mode** (top-right toggle).
+3. Click **"Load unpacked"** and select the `extension/` directory inside this repository.
+
+### 2. Start the Local Server
+```bash
+python3 fau_downloader.py --server
+```
+
+### 3. Download from FAU.tv
+1. Go to any lecture or course series page on [FAU.tv](https://www.fau.tv).
+2. Click the green floating **"Download"** button on the page or the extension icon in your toolbar.
+3. The extension automatically grabs your active session cookie and triggers the download losslessly via your local `ffmpeg`!
+4. *(Optional)* If the server is offline, click **"Copy Command"** in the extension popup to get a ready-to-run terminal command pre-filled with your live cookie!
+
+---
+
 ## ⚙️ Command-Line Options
 
 | Argument | Description | Default |
 | :--- | :--- | :--- |
-| `url` | URL of the clip or series to download | *Required* |
+| `url` | URL of the clip or series to download | *Optional with `--server`* |
+| `--server` | Start the local companion HTTP server for the Chrome Extension | `False` |
+| `--port` | Port for the companion HTTP server | `48123` |
+| `--host` | Host interface to bind companion server | `127.0.0.1` |
 | `--series` | Download all episodes found in the course series | `False` |
 | `--cookie` | Session cookie string (overrides `.env`) | Value from `.env` |
 | `--cookie-file` | Path to a Netscape `cookies.txt` file | `None` |

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAU.tv Downloader</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="logo-area">
+        <img src="icons/icon-48.png" alt="FAU Downloader" class="header-icon">
+        <div class="header-titles">
+          <h1 class="header-title">FAU.tv Downloader</h1>
+          <span class="header-subtitle">Companion Extension</span>
+        </div>
+      </div>
+      <div id="server-status-pill" class="status-pill offline" title="Companion server status">
+        <span class="status-dot"></span>
+        <span id="server-status-text">Offline</span>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="popup-body">
+      <!-- Active Tab Section -->
+      <section class="card" id="tab-card">
+        <div class="card-header">
+          <span class="card-label">CURRENT PAGE</span>
+          <span id="page-type-badge" class="badge">Checking...</span>
+        </div>
+        <div id="page-title" class="page-title">Loading current tab...</div>
+
+        <div id="fau-action-controls" style="display: none;">
+          <div class="form-row">
+            <label for="stream-select" class="form-label">Stream:</label>
+            <select id="stream-select" class="form-select">
+              <option value="composite" selected>Composite (Slides + Camera)</option>
+              <option value="presentation">Presentation (Slides only)</option>
+              <option value="presenter">Presenter (Camera only)</option>
+            </select>
+          </div>
+
+          <div class="form-row checkbox-row">
+            <label class="checkbox-label">
+              <input type="checkbox" id="subs-checkbox" checked>
+              Download Subtitles (.vtt)
+            </label>
+          </div>
+
+          <div class="button-group">
+            <button id="download-btn" class="btn btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span id="download-btn-text">Download</span>
+            </button>
+            <button id="copy-cmd-btn" class="btn btn-secondary" title="Copy CLI command with active cookie">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copy Command
+            </button>
+          </div>
+        </div>
+
+        <div id="not-fau-prompt" style="display: none;">
+          <p class="hint-text">Navigate to an FAU.tv lecture or course series page to trigger 1-click downloads.</p>
+          <a href="https://www.fau.tv" target="_blank" class="btn btn-secondary btn-block">Open FAU.tv</a>
+        </div>
+      </section>
+
+      <!-- Cookie & Auth Section -->
+      <section class="card">
+        <div class="card-header">
+          <span class="card-label">SESSION AUTHENTICATION</span>
+          <span id="cookie-status-badge" class="badge">Checking...</span>
+        </div>
+        <div class="cookie-info">
+          <div id="cookie-status-desc" class="cookie-desc">Scanning browser cookies...</div>
+          <div class="button-row">
+            <button id="sync-cookie-btn" class="btn btn-sm btn-outline" title="Save live cookie directly to .env">
+              ⚡ Sync to .env
+            </button>
+            <button id="copy-cookie-btn" class="btn btn-sm btn-outline">
+              📋 Copy Cookie
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Server Activity / Queue Section -->
+      <section class="card" id="activity-card">
+        <div class="card-header">
+          <span class="card-label">DOWNLOAD ACTIVITY</span>
+          <button id="refresh-jobs-btn" class="icon-btn" title="Refresh">↻</button>
+        </div>
+        <div id="activity-content">
+          <div class="loading-text">Connecting to server...</div>
+        </div>
+      </section>
+
+      <!-- Server Launch Banner (Shown when offline) -->
+      <div id="offline-banner" class="banner banner-warning" style="display: none;">
+        <div class="banner-title">⚠️ Downloader Server Offline</div>
+        <div class="banner-body">
+          Start the companion server in your terminal:
+          <div class="code-snippet">
+            <span id="server-cmd-text">python3 fau_downloader.py --server</span>
+            <button id="copy-server-cmd-btn" class="copy-tiny-btn" title="Copy">📋</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback Toast -->
+      <div id="popup-toast" class="toast"></div>
+    </main>
+
+    <!-- Footer Settings Toggle -->
+    <footer class="popup-footer">
+      <div class="footer-links">
+        <span id="toggle-settings-btn" class="footer-link">⚙ Settings</span>
+        <a href="https://github.com/your-username/fau-tv-downloader" target="_blank" class="footer-link">Documentation</a>
+      </div>
+
+      <!-- Settings Panel -->
+      <div id="settings-panel" class="settings-panel" style="display: none;">
+        <div class="form-row">
+          <label for="server-port-input" class="form-label">Server Port:</label>
+          <input type="number" id="server-port-input" class="form-input" value="48123">
+        </div>
+        <button id="save-settings-btn" class="btn btn-sm btn-primary">Save Settings</button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+

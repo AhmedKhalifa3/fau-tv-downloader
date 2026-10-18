@@ -5,7 +5,7 @@ FAU.tv Lecture & Series Downloader
 A lightweight, zero-dependency Python tool to download public and authenticated
 lecture recordings and series from the FAU.tv video portal for offline viewing.
 
-Repository: https://github.com/your-username/fau-tv-downloader
+Repository: https://github.com/AhmedKhalifa3/fau-tv-downloader
 License: MIT
 """
 
